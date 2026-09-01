@@ -1,101 +1,84 @@
 # SmartRoad - Traffic Accident Analytics
 
-SmartRoad is a Computational Analytics project for analysing road collisions, identifying high-risk patterns and geographic hotspots, comparing classification models, and estimating the probability that a collision is high severity (Fatal or Serious).
+SmartRoad is a Computational Analytics project that analyses road collision data to identify accident patterns, high-risk locations and factors associated with serious collisions. It also provides a machine-learning based high-severity risk prediction through an interactive web dashboard.
 
-## What the project includes
+## Project Features
 
-- Official 2025 UK Department for Transport STATS19 collision dataset
-- Data cleaning, missing-value handling and feature engineering
-- Exploratory data analysis and eight visualisations
-- Three classification models: Random Forest, Logistic Regression and Gradient Boosting
-- Stratified train/test split and 5-fold cross-validation
+- Official 2025 UK Department for Transport (DfT) STATS19 collision dataset
+- Data cleaning, missing-value handling and validation
+- Feature engineering for time, road, environmental and traffic-related variables
+- Exploratory data analysis with eight visualisations
+- Three classification models:
+  - Random Forest
+  - Logistic Regression
+  - Gradient Boosting
+- 80/20 stratified train-test split
+- 5-fold stratified cross-validation
 - Accuracy, precision, recall, F1-score and confusion-matrix evaluation
 - K-Means geographic hotspot clustering
-- Interactive Streamlit dashboard with readable STATS19 field labels
-- Live weather context through the Open-Meteo API
-- Automated analytical PDF report generation
+- Interactive Streamlit dashboard
+- User-friendly collision severity prediction form
+- Live weather information using the Open-Meteo API
+- Automated PDF report generation
+- Public web deployment through Streamlit Community Cloud
 
 ## 2025 Model Results
 
-Gradient Boosting was selected using the highest mean 5-fold cross-validated F1-score.
+Three classification models were compared using the same preprocessing and feature-engineering pipeline.
 
-- Accuracy: 60.58%
-- Precision: 34.12%
-- Recall: 53.95%
-- F1-score: 41.80%
-- 5-fold CV F1: 42.09% ± 0.24%
-- Records: 101,525
+Gradient Boosting was selected because it achieved the highest mean 5-fold cross-validated F1-score.
 
-## Data
+| Model | Accuracy | Precision | Recall | F1 | CV F1 |
+|---|---:|---:|---:|---:|---:|
+| Random Forest | 65.01% | 33.85% | 34.92% | 34.38% | 34.59% |
+| Logistic Regression | 57.33% | 32.60% | 58.66% | 41.91% | 41.85% |
+| Gradient Boosting | 60.58% | 34.12% | 53.95% | 41.80% | 42.09% |
 
-The repository contains `data/road_collisions_2025.csv`, the 2025 collision dataset used for the project, together with a small synthetic `data/demo_accidents.csv` file for local software testing.
+### Selected Model: Gradient Boosting
 
-Official DfT source:
+- Accuracy: **60.58%**
+- Precision: **34.12%**
+- Recall: **53.95%**
+- F1-score: **41.80%**
+- 5-fold CV F1: **42.09% ± 0.24%**
+- Records analysed: **101,525**
+
+The prediction target is a binary classification:
+
+- **1 = Fatal or Serious**
+- **0 = Slight**
+
+## Dataset
+
+The project uses the official 2025 UK Department for Transport STATS19 collision dataset.
+
+The dataset contains **101,525 recorded collisions** used for the final analysis.
+
+The repository also contains a small synthetic dataset (`demo_accidents.csv`) for local software testing.
+
+Official source:
+
 https://www.gov.uk/government/statistical-data-sets/road-safety-open-data
 
-The analysis target is high-severity collision (Fatal or Serious) versus Slight. Outcome-derived variables that would leak the target are not used as predictive features.
-
-## Run locally
-
-Create and activate a virtual environment, then install the requirements:
-
-```bash
-python -m venv .venv
-# Windows
-.venv\\Scripts\\activate
-# macOS/Linux
-# source .venv/bin/activate
-
-python -m pip install -r requirements.txt
-```
-
-Run the automated tests:
-
-```bash
-python -m unittest discover -s tests -v
-```
-
-Run the analysis on the official 2025 dataset:
-
-```bash
-python run_analysis.py --data data/road_collisions_2025.csv
-```
-
-Start the dashboard:
-
-```bash
-streamlit run app.py
-```
-
-Generate the analytical PDF report:
-
-```bash
-python generate_report.py
-```
-
-## Live weather
-
-The dashboard can retrieve current weather context for selected UK locations using the Open-Meteo API. These live values are displayed for context only and are not fed into the historical 2025 classifier.
-
-## Repository structure
+## Analysis Pipeline
 
 ```text
-├── app.py
-├── download_data.py
-├── generate_report.py
-├── run_analysis.py
-├── requirements.txt
-├── README.md
-├── data/
-├── models/
-├── outputs/
-├── notebooks/
-├── src/
-├── tests/
-├── report/
-└── presentation/
-```
-
-## Academic deliverables
-
-The `report/` folder contains the project report in PDF and editable DOCX format. The `presentation/` folder contains the presentation in PPTX and PDF format.
+Data Acquisition
+       ↓
+Data Cleaning and Validation
+       ↓
+Exploratory Data Analysis
+       ↓
+Feature Engineering
+       ↓
+Train/Test Split
+       ↓
+5-Fold Cross-Validation
+       ↓
+Model Comparison
+       ↓
+Performance Evaluation
+       ↓
+Hotspot Clustering
+       ↓
+Streamlit Dashboard
