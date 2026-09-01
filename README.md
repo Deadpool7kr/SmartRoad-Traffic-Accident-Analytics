@@ -15,7 +15,7 @@ SmartRoad is a Computational Analytics project for analysing road collisions, id
 - Live weather context through the Open-Meteo API
 - Automated analytical PDF report generation
 
-## Final 2025 model result
+## 2025 Model Results
 
 Gradient Boosting was selected using the highest mean 5-fold cross-validated F1-score.
 
@@ -79,8 +79,6 @@ The dashboard can retrieve current weather context for selected UK locations usi
 
 ## Repository structure
 
-```text
-SmartRoad_Traffic_Accident_Analytics/
 ├── app.py
 ├── download_data.py
 ├── generate_report.py
@@ -95,12 +93,4 @@ SmartRoad_Traffic_Accident_Analytics/
 ├── tests/
 ├── report/
 └── presentation/
-```
 
-## Academic deliverables
-
-The `report/` folder contains the project report in PDF and editable DOCX format. The `presentation/` folder contains the presentation in PPTX and PDF format.
-
-## Notes for the viva
-
-Be ready to explain the target definition, preprocessing, feature engineering, one-hot/ordinal encoding, stratified splitting, cross-validation, F1-score, confusion matrix, K-Means hotspot clustering, live API integration, and model limitations.
