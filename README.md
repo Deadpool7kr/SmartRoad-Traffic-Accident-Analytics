@@ -95,3 +95,7 @@ The dashboard can retrieve current weather context for selected UK locations usi
 ├── report/
 └── presentation/
 ```
+
+## Academic deliverables
+
+The `report/` folder contains the project report in PDF and editable DOCX format. The `presentation/` folder contains the presentation in PPTX and PDF format.

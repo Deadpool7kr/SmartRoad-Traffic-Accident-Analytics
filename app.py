@@ -16,6 +16,9 @@ st.set_page_config(page_title='SmartRoad', page_icon='🚦', layout='wide')
 st.title('SmartRoad - Traffic Accident Analytics')
 st.caption('Computational Analytics Project | Severity prediction, hotspot analysis and safety insights')
 
+if 'last_prediction' not in st.session_state:
+    st.session_state['last_prediction'] = None
+
 @st.cache_data
 
 def load_selected(path):
@@ -169,6 +172,24 @@ if model_path.exists():
         }])
         p=int(model.predict(X)[0]); pro=float(model.predict_proba(X)[0,1]) if hasattr(model,'predict_proba') else None
         risk_label = 'HIGH' if p else 'LOW'
+        st.session_state['last_prediction'] = {
+            'risk': risk_label,
+            'probability': pro if pro is not None else None,
+            'hour': hour,
+            'month': month,
+            'speed_limit': speed,
+            'road_type': road_type_map.get(road_type, road_type),
+            'weather_conditions': weather_map.get(weather, weather),
+            'road_surface': surface_map.get(surface, surface),
+            'light_conditions': light_map.get(light, light),
+            'junction_type': junction_map.get(junction, junction),
+            'area_type': urban_map.get(urban, urban),
+            'first_road_class': road_class_map.get(road_class, road_class),
+            'number_of_vehicles': vehicles,
+            'weekend': 'Yes' if weekend else 'No',
+            'night_time': 'Yes' if night else 'No',
+            'rush_hour': 'Yes' if rush else 'No',
+        }
         if p:
             st.error(f'Predicted risk: {risk_label}')
         else:
@@ -186,6 +207,7 @@ if st.button('Generate Automated PDF Report'):
             summary_path='outputs/run_summary.json',
             output_path=report_path,
             charts_dir='outputs',
+            prediction=st.session_state.get('last_prediction'),
         )
         st.success('Automated PDF report generated successfully.')
         st.download_button(
