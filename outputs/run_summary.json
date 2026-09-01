@@ -1,0 +1,130 @@
+{
+  "rows_raw": 101525,
+  "rows_clean": 101525,
+  "charts": [
+    "01_accidents_by_hour.png",
+    "02_severity_distribution.png",
+    "03_speed_limit_histogram.png",
+    "04_weekday_hour_heatmap.png",
+    "05_speed_by_severity_boxplot.png",
+    "06_accident_scatter_map.png",
+    "07_confusion_matrix.png",
+    "08_model_comparison.png"
+  ],
+  "selected_model": "Gradient Boosting",
+  "metrics": {
+    "accuracy": 0.6057621275547894,
+    "precision": 0.3412057915974365,
+    "recall": 0.5395008444361044,
+    "f1": 0.41802980734278444,
+    "n_train": 81220,
+    "n_test": 20305,
+    "positive_rate": 0.2624378231962571,
+    "cv_f1_mean": 0.420922306297947,
+    "cv_f1_std": 0.0024480246876260486
+  },
+  "model_comparison": {
+    "Random Forest": {
+      "accuracy": 0.6500861856685546,
+      "precision": 0.33848672244452527,
+      "recall": 0.3492212422593357,
+      "f1": 0.3437702041193313,
+      "n_train": 81220,
+      "n_test": 20305,
+      "positive_rate": 0.2624378231962571,
+      "cv_f1_mean": 0.3459008039835484,
+      "cv_f1_std": 0.005419006398688684
+    },
+    "Logistic Regression": {
+      "accuracy": 0.5732578182713617,
+      "precision": 0.3260325406758448,
+      "recall": 0.5866016138112217,
+      "f1": 0.4191191258295904,
+      "n_train": 81220,
+      "n_test": 20305,
+      "positive_rate": 0.2624378231962571,
+      "cv_f1_mean": 0.4185497814428035,
+      "cv_f1_std": 0.0027176629591537504
+    },
+    "Gradient Boosting": {
+      "accuracy": 0.6057621275547894,
+      "precision": 0.3412057915974365,
+      "recall": 0.5395008444361044,
+      "f1": 0.41802980734278444,
+      "n_train": 81220,
+      "n_test": 20305,
+      "positive_rate": 0.2624378231962571,
+      "cv_f1_mean": 0.420922306297947,
+      "cv_f1_std": 0.0024480246876260486
+    }
+  },
+  "features": [
+    "hour",
+    "month",
+    "weekend",
+    "night",
+    "rush_hour",
+    "speed_limit",
+    "number_of_vehicles",
+    "multi_vehicle",
+    "road_type",
+    "junction_detail",
+    "light_conditions",
+    "weather_conditions",
+    "road_surface_conditions",
+    "urban_or_rural_area",
+    "first_road_class"
+  ],
+  "top_features": [
+    {
+      "feature": "number_of_vehicles",
+      "importance_mean": 0.04165178930153911,
+      "importance_std": 0.0030132970715399045
+    },
+    {
+      "feature": "urban_or_rural_area",
+      "importance_mean": 0.01993154219475591,
+      "importance_std": 0.0015096193488718644
+    },
+    {
+      "feature": "speed_limit",
+      "importance_mean": 0.019172328193546535,
+      "importance_std": 0.001968750433764204
+    },
+    {
+      "feature": "road_type",
+      "importance_mean": 0.012711333060737129,
+      "importance_std": 0.0013755226742150812
+    },
+    {
+      "feature": "hour",
+      "importance_mean": 0.007271979682944865,
+      "importance_std": 0.001894176952556007
+    },
+    {
+      "feature": "weather_conditions",
+      "importance_mean": 0.005387092104032293,
+      "importance_std": 0.001357480264836433
+    },
+    {
+      "feature": "first_road_class",
+      "importance_mean": 0.0037134007115365783,
+      "importance_std": 0.000837559488626063
+    },
+    {
+      "feature": "junction_detail",
+      "importance_mean": 0.0033839919391587536,
+      "importance_std": 0.000578775991770672
+    },
+    {
+      "feature": "month",
+      "importance_mean": 0.002613414564767498,
+      "importance_std": 0.0008207541608918114
+    },
+    {
+      "feature": "night",
+      "importance_mean": 0.0018730131910334041,
+      "importance_std": 0.0005178332632356889
+    }
+  ]
+}

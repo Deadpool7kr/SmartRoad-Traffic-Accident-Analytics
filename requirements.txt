@@ -1,0 +1,11 @@
+pandas>=2.0
+numpy>=1.24
+matplotlib>=3.7
+seaborn>=0.13
+scikit-learn>=1.3
+streamlit>=1.35
+plotly>=5.20
+joblib>=1.3
+requests>=2.31
+nbformat>=5.9
+reportlab>=4.0
