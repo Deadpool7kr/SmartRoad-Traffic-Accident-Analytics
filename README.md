@@ -79,6 +79,7 @@ The dashboard can retrieve current weather context for selected UK locations usi
 
 ## Repository structure
 
+```text
 ├── app.py
 ├── download_data.py
 ├── generate_report.py
@@ -93,4 +94,4 @@ The dashboard can retrieve current weather context for selected UK locations usi
 ├── tests/
 ├── report/
 └── presentation/
-
+```
